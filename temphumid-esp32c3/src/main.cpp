@@ -8,9 +8,9 @@
 #define DHTTYPE DHT11
 
 // WIFI CONFIGURATION
-const char *ssid = "Buckminster";
-const char *password = "gooddog4";
-const char *serverUrl = "https://maker.deno.dev/api/temperature";
+const char *ssid = "Haystack Labs";
+const char *password = "Labs2024";
+const char *serverUrl = "labs.local";
 
 DHT dht(DHTPIN, DHTTYPE);
 
@@ -45,7 +45,7 @@ void loop()
     HTTPClient http;
     http.begin(serverUrl);
     http.addHeader("Content-Type", "application/json");
-    String jsonPayload = "{\"temp\":" + String(temperature) + ",\"humid\":" + String(humidity) + "}";
+    String jsonPayload = "{\"temperature\":" + String(temperature) + ",\"humidity\":" + String(humidity) + "}";
     int httpResponseCode = http.POST(jsonPayload);
 
     if (httpResponseCode > 0)
